@@ -25,29 +25,3 @@ print(vetor)
 
 inv= unique(vetor)
 print(inv)
-
-'''def merge(vetor1, vetor2):
-    tamanho= len(vetor1)+len(vetor2)
-    temp=[None]*tamanho
-    aux=0
-    for i in range(tamanho-1):
-        #if vetor1[i] < vetor2[i]:
-           # aux
-        while vetor1[i] < vetor2[i]:
-            
-            temp[aux]=vetor1[aux]
-        temp[aux]=vetor2[i]
-    return temp
-'''
-
-'''for i in range(len(vetor1)-1):
-        #if vetor1[i] < vetor2[i]:
-           # aux
-    while vetor1[i] < vetor2[j]:
-        temp[aux]=vetor1[aux]
-        aux=aux+1
-        j=j+1
-    j=i
-        
-    temp[aux]=vetor2[i]
-'''

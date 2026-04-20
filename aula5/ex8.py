@@ -20,7 +20,7 @@ contador=0
 
 while escolha != "n":
     if contador>len(vetor)-1:
-        #print("Erro: Overflow de Memória")
+       
         criarVetor(vetor)
         break
     vetor[contador]= contador
