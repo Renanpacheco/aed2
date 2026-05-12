@@ -22,39 +22,39 @@ mapa = {
     'Neamt': [('Iasi', 87)],
 }
 
-    
-def busca_dfs(grafo, inicio, objetivo):
-    pilha = [(inicio, [inicio], 0)]
-    visitados = set()
+def busca_bfs(grafo, inicio, objetivo):
 
-    while pilha:
-        #print(pilha)
-        #print(visitados)
+    fila = [(inicio, [inicio], 0)]
 
-        no_atual, caminho, custo = pilha.pop()
-        #print(no_atual, caminho , custo)
-        print(caminho)
+    visitados = set([inicio])
+
+    while fila:
+
+        
+        no_atual, caminho, custo = fila.pop(0)
+
+        print(f"Nó atual: {no_atual}")
 
         if no_atual == objetivo:
             return caminho, custo
 
-        if no_atual not in visitados:
+        for vizinho, distancia in grafo[no_atual]:
 
-            visitados.add(no_atual)
+            if vizinho not in visitados:
 
-            for vizinho, distancia in reversed(grafo[no_atual]):
+                visitados.add(vizinho)
 
-                if vizinho not in visitados:
-                    nova_rota = caminho + [vizinho]
-                    novo_custo = custo + distancia
+                fila.append((
+                    vizinho,
+                    caminho + [vizinho],
+                    custo + distancia
+                ))
 
-                    pilha.append((vizinho, nova_rota, novo_custo))
 
-   
-    
-    return None, 0 
+    return None, 0
 
-caminho_dfs, custo_dfs = busca_dfs(mapa, 'Arad', 'Bucharest')
-print("--- DFS ---")
-print(f"Caminho: {' -> '.join(caminho_dfs)}" if caminho_dfs else "Caminho não encontrado")
-print(f"Custo Total: {custo_dfs}")
+caminho_bfs, custo_bfs = busca_bfs(mapa, 'Arad', 'Bucharest')
+
+print("\n--- BFS ---")
+print(f"Caminho: {' -> '.join(caminho_bfs)}" if caminho_bfs else "Caminho não encontrado")
+print(f"Custo Total: {custo_bfs}")
